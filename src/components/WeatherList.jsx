@@ -1,14 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import Chart  from './Chart';
+import Chart from './Chart';
 
 class WeatherList extends Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   renderCityData(cityData) {
     const cityName = cityData.city.name;
@@ -19,20 +14,20 @@ class WeatherList extends Component {
       <tr key={cityName}>
         <td>{cityName}</td>
         <td>
-          <Chart data={tempList} color="orange" unit="K"/>
+          <Chart data={tempList} color="orange" unit="K" />
         </td>
         <td>
-          <Chart data={pressureList} color="green" unit="hPa"/>
+          <Chart data={pressureList} color="green" unit="hPa" />
         </td>
         <td>
-          <Chart data={humidityList} color="black" unit="%"/>
+          <Chart data={humidityList} color="black" unit="%" />
         </td>
       </tr>
     );
   }
 
   render() {
-    return(
+    return (
       <table className="table table-hover">
         <thead>
           <tr>
@@ -42,16 +37,11 @@ class WeatherList extends Component {
             <th>Humidity (%)</th>
           </tr>
         </thead>
-        <tbody>
-          {
-            this.props.weather.map(this.renderCityData)
-          }
-        </tbody>
+        <tbody>{this.props.weather.map(this.renderCityData)}</tbody>
       </table>
     );
   }
 }
-
 
 function mapStateToProps({ weather }) {
   return {

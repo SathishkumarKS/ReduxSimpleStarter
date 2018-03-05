@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -8,18 +8,23 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: ""
+      searchTerm: ''
     };
   }
   onFormSubmit(e) {
     e.preventDefault();
     this.props.fetchWeather(this.state.searchTerm);
-    this.setState({searchTerm: ''});
+    this.setState({ searchTerm: '' });
   }
 
   render() {
     return (<form onSubmit={event => this.onFormSubmit(event)} action="" className="input-group">
-      <input placeholder="Get forecast for your favourite City" className="form-control" value={this.state.searchTerm} onChange={e => this.setState({searchTerm: e.target.value})}/>
+      <input
+        placeholder="Get forecast for your favourite City"
+        className="form-control"
+        value={this.state.searchTerm}
+        onChange={e => this.setState({ searchTerm: e.target.value })}
+      />
       <span className="input-group-btn">
         <button type="submit" className="btn btn-secondary">Submit</button>
       </span>
