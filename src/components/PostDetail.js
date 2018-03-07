@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import { fetchPost, deletePost } from '../actions/index';
 
@@ -10,7 +10,7 @@ class PostDetail extends Component {
   };
 
   componentWillMount() {
-    this.props.fetchPost(this.props.params.postId);
+    this.props.fetchPost(this.props.match.params.postId);
   }
 
   handleDeletePost(postId) {
