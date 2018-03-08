@@ -1,13 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { fetchPost, deletePost } from '../actions/index';
 
 class PostDetail extends Component {
-  static contextTypes = {
-    router: PropTypes.object
-  };
 
   componentWillMount() {
     this.props.fetchPost(this.props.match.params.postId);
@@ -15,7 +12,7 @@ class PostDetail extends Component {
 
   handleDeletePost(postId) {
     this.props.deletePost(postId)
-      .then(() => this.context.router.push('/'));
+      .then(() => this.props.history.push('/'));
   }
 
   render() {

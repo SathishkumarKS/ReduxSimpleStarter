@@ -6,14 +6,10 @@ import { createPost } from '../actions/index';
 
 class NewPost extends Component {
 
-  static contextTypes = {
-    router: PropTypes.object
-  };
-
   onSubmit(formData) {
     this.props.createPost(formData)
       .then(() => {
-        this.context.router.push('/');
+        this.props.history.push('/');
       });
   }
 

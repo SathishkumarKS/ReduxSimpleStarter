@@ -24,10 +24,9 @@ export function createPost(newPost) {
   };
 }
 export function fetchPost(postId) {
-  const request = axios.get(`${BASE_URL}/posts/${postId}${API_KEY}`);
   return {
     type: FETCH_POST,
-    payload: request
+    postId
   };
 }
 export function deletePost(postId) {
